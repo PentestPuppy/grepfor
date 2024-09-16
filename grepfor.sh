@@ -16,13 +16,13 @@ toGrepList=$1
 target=$2
 
 if [[ -z "$1" ]]; then
-        echo ":-- Enter the to-grep list (should be a file w/ new-line separated strings): "
-        read -a toGrepList
+	echo ":-- Enter the to-grep list (should be a file w/ new-line separated strings): "
+	read -a toGrepList
 fi
 
 if [[ -z "$2" ]]; then
-        echo ":-- Enter the file to grep: "
-        read -a target
+	echo ":-- Enter the file to grep: "
+	read -a target
 fi
 
 list=$(cat $toGrepList)
@@ -30,17 +30,17 @@ echo ""
 echo ':-- Starting...'
 
 for str in $list; do
-        grepWorthit=$(grep -c $str $target)
+	grepWorthit=$(grep -c $str $target)
 
-        if [[ $grepWorthit -eq 0 ]]; then
-                continue
-        else
-                echo -e ":-- Grepping for \033[32m$str\033[0m"
-                echo "$grepWorthit results:"
-                echo ""
-                grep "$str" $target --color
-                echo ""
-        fi
+	if [[ $grepWorthit -eq 0 ]]; then
+		continue
+	else
+		echo -e ":-- Grepping for \033[32m$str\033[0m"
+		echo "$grepWorthit results:"
+		echo ""
+		grep "$str" $target --color
+		echo ""
+	fi
 
 done
 
