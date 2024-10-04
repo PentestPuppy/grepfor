@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Made by TRASH PUPPY
+#	2024
+#
+
 # GrepFor.sh
 # CLI utility for grepping a target file for a list of words
 
@@ -33,6 +37,8 @@ for str in $list; do
 	grepWorthit=$(grep -c $str $target)
 
 	if [[ $grepWorthit -eq 0 ]]; then
+		echo -e ":-- No results for \033[32m$str\033[0m, moving on..."
+		echo ""
 		continue
 	else
 		echo -e ":-- Grepping for \033[32m$str\033[0m"
